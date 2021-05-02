@@ -6,7 +6,7 @@ import java.util.Random;
 import javax.swing.*;
 
 public class Registeration {
-    JPanel registrationPanel = new JPanel();
+    static JPanel registrationPanel = new JPanel();
     JButton backB = new JButton("< BACK to Login");
 
     Registeration() {

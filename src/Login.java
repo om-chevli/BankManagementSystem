@@ -10,6 +10,7 @@ import javax.swing.*;
 public class Login {
 
     public static JPanel loginFormPanel = new JPanel();
+    static JPanel logoPanel = new JPanel();
     static Registeration rPanel = new Registeration();
     static ForgotPassword fPanel = new ForgotPassword();
 
@@ -20,9 +21,10 @@ public class Login {
     public static void main(String[] args) {
 
         // Panel Initialize
-        JPanel logoPanel = new JPanel();
+        
         logoPanel.setBounds(0, 0, 450, 700);
         logoPanel.setBackground(new Color(31, 30, 31));
+        // logoPanel.setVisible(false);
 
         // loginFormPanel.setBackground(Color.BLUE);
         loginFormPanel.setBounds(451, 0, 750, 700);
@@ -115,20 +117,20 @@ public class Login {
             }
         });
 
-        JFrame frame = new JFrame();
-        frame.setTitle("IND Bank Application");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setResizable(false);
-        frame.setSize(1200, 700);
-        ImageIcon iconLogo = new ImageIcon("lib/iconLogo.png");
-        frame.setIconImage(iconLogo.getImage());
-        frame.setVisible(true);
+        // JFrame frame = new JFrame();
+        // frame.setTitle("IND Bank Limited - Client Software");
+        // frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        // frame.setResizable(false);
+        // frame.setSize(1200, 700);
+        // ImageIcon iconLogo = new ImageIcon("lib/iconLogo.png");
+        // frame.setIconImage(iconLogo.getImage());
+        // frame.setVisible(true);
 
-        frame.setLayout(null);
-        frame.add(logoPanel);
-        frame.add(loginFormPanel);
-        frame.add(rPanel.registrationPanel);
-        frame.add(fPanel.forgotPanel);
+        // frame.setLayout(null);
+        // frame.add(logoPanel);
+        // frame.add(loginFormPanel);
+        // frame.add(rPanel.registrationPanel);
+        // frame.add(fPanel.forgotPanel);
     }
 }
 // City and address textfeild

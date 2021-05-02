@@ -5,7 +5,7 @@ import java.sql.*;
 import javax.swing.*;
 
 public class ForgotPassword {
-    JPanel forgotPanel = new JPanel();
+    static JPanel forgotPanel = new JPanel();
     JButton backB = new JButton("< BACK to Login");
 
     ForgotPassword() {
