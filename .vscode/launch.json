@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch App",
+            "request": "launch",
+            "mainClass": "App",
+            "projectName": "BankManagementSystem_ca36fa1b"
+        },
+        {
+            "type": "java",
             "name": "Launch Login",
             "request": "launch",
             "mainClass": "Login",

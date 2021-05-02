@@ -11,6 +11,7 @@ public class Login {
 
     public static JPanel loginFormPanel = new JPanel();
     static Registeration rPanel = new Registeration();
+    static ForgotPassword fPanel = new ForgotPassword();
 
     enum toWhere {
         LoginPage, RegisterPage,
@@ -69,6 +70,13 @@ public class Login {
 
         });
 
+        forgotPass.addActionListener(new ActionListener(){
+            public void actionPerformed(java.awt.event.ActionEvent evt){
+                loginFormPanel.setVisible(false);
+                fPanel.forgotPanel.setVisible(true);
+            }
+        });
+
         loginFormPanel.add(txtLogin);
         loginFormPanel.add(anLabel);
         loginFormPanel.add(anTextField);
@@ -120,7 +128,7 @@ public class Login {
         frame.add(logoPanel);
         frame.add(loginFormPanel);
         frame.add(rPanel.registrationPanel);
-
+        frame.add(fPanel.forgotPanel);
     }
 }
 // City and address textfeild
