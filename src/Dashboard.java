@@ -112,17 +112,6 @@ public class Dashboard {
 
         mainPanel.setLayout(new BorderLayout());
 
-        // JFrame f = new JFrame();
-        // f.setTitle("IND Bank Limited - Client Software");
-        // f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        // f.setResizable(false);
-        // f.setSize(1200, 700);
-        // ImageIcon iconLogo = new ImageIcon("lib/iconLogo.png");
-        // f.setIconImage(iconLogo.getImage());
-        // f.setVisible(true);
-        // f.setLayout(null);
-        // f.add(mainPanel);
-
         Component aIJcomps[] = AccountInfo.accInfoPanel.getComponents();
         Component whcomps[] = Withdraw.withdrawPanel.getComponents();
         Component deComps[] = Deposit.depositPanel.getComponents();
