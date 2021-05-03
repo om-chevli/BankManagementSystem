@@ -67,7 +67,7 @@ public class Login {
         cnaButton.addActionListener(new ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 loginFormPanel.setVisible(false);
-                rPanel.registrationPanel.setVisible(true);
+                Registeration.registrationPanel.setVisible(true);
             };
 
         });
@@ -75,7 +75,7 @@ public class Login {
         forgotPass.addActionListener(new ActionListener(){
             public void actionPerformed(java.awt.event.ActionEvent evt){
                 loginFormPanel.setVisible(false);
-                fPanel.forgotPanel.setVisible(true);
+                ForgotPassword.forgotPanel.setVisible(true);
             }
         });
 
@@ -116,21 +116,6 @@ public class Login {
                 }
             }
         });
-
-        // JFrame frame = new JFrame();
-        // frame.setTitle("IND Bank Limited - Client Software");
-        // frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        // frame.setResizable(false);
-        // frame.setSize(1200, 700);
-        // ImageIcon iconLogo = new ImageIcon("lib/iconLogo.png");
-        // frame.setIconImage(iconLogo.getImage());
-        // frame.setVisible(true);
-
-        // frame.setLayout(null);
-        // frame.add(logoPanel);
-        // frame.add(loginFormPanel);
-        // frame.add(rPanel.registrationPanel);
-        // frame.add(fPanel.forgotPanel);
     }
 }
 // City and address textfeild
