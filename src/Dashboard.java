@@ -135,7 +135,6 @@ public class Dashboard {
                 contentPanel.removeAll();
                 contentPanel.repaint();
                 withdrawRef.setInfo();
-                // withdrawRef.withdrawButton();
                 for (Component comp : whcomps) {
                     contentPanel.add(comp);
                     contentPanel.repaint();
@@ -147,6 +146,7 @@ public class Dashboard {
             public void actionPerformed(java.awt.event.ActionEvent e) {
                 contentPanel.removeAll();
                 contentPanel.repaint();
+                depoRef.setInfo();
                 for (Component comp : deComps) {
                     contentPanel.add(comp);
                     contentPanel.repaint();

@@ -1,10 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.sql.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -58,7 +55,7 @@ public class Withdraw {
 
                 if (wdAmt > totalAmt && wdAmt > 1) {
                     JOptionPane.showMessageDialog(withdrawPanel,
-                            "Enough Balance not available\nPlease speccify a amount smaller then your availabke balance.",
+                            "Insufficient Balance!",
                             "Failure!", JOptionPane.WARNING_MESSAGE);
                 } else {
                     if (wdAmt > 1) {
@@ -81,7 +78,7 @@ public class Withdraw {
                         int i = ps.executeUpdate();
                         if (i > 0) {
                             JOptionPane.showMessageDialog(withdrawPanel,
-                                    "Rs. " + wdAmt + "Successfuly Withdrawn!\nNew Balance is Rs. " + balance + "!",
+                                    "Rs. " + wdAmt + " Successfuly Withdrawn!\nNew Balance is Rs. " + balance + "!",
                                     "Success!", JOptionPane.INFORMATION_MESSAGE);
                             setInfo();
                             txtWamt.setText("");
