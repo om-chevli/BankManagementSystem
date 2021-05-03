@@ -13,6 +13,9 @@ public class Login {
     static JPanel logoPanel = new JPanel();
     static Registeration rPanel = new Registeration();
     static ForgotPassword fPanel = new ForgotPassword();
+    static Dashboard dashRef = new Dashboard();
+
+    public static String acN;
 
     enum toWhere {
         LoginPage, RegisterPage,
@@ -21,7 +24,7 @@ public class Login {
     public static void main(String[] args) {
 
         // Panel Initialize
-        
+
         logoPanel.setBounds(0, 0, 450, 700);
         logoPanel.setBackground(new Color(31, 30, 31));
         // logoPanel.setVisible(false);
@@ -72,8 +75,8 @@ public class Login {
 
         });
 
-        forgotPass.addActionListener(new ActionListener(){
-            public void actionPerformed(java.awt.event.ActionEvent evt){
+        forgotPass.addActionListener(new ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 loginFormPanel.setVisible(false);
                 ForgotPassword.forgotPanel.setVisible(true);
             }
@@ -104,15 +107,19 @@ public class Login {
                     ps.setString(2, pin);
                     rs = ps.executeQuery();
                     if (rs.next()) {
-                        JOptionPane.showMessageDialog(loginFormPanel, "Login Successful!", "Success!",
-                                JOptionPane.INFORMATION_MESSAGE);
+                        acN = acn;
+                        dashRef.setData();
+                        loginFormPanel.setVisible(false);
+                        logoPanel.setVisible(false);
+                        Dashboard.menuPanel.setVisible(true);
+                        Dashboard.mainPanel.setVisible(true);
                     } else {
-                        JOptionPane.showMessageDialog(loginFormPanel, "Incorrect Credentials.\nTRY AGAIN!!!", "Failure!",
-                                JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(loginFormPanel, "Incorrect Credentials.\nTRY AGAIN!!!",
+                                "Failure!", JOptionPane.WARNING_MESSAGE);
                     }
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(loginFormPanel, "Unable to login!", "Error!",
-                                JOptionPane.ERROR_MESSAGE);
+                            JOptionPane.ERROR_MESSAGE);
                 }
             }
         });

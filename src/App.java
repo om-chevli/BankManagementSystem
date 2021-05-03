@@ -20,5 +20,6 @@ public class App {
         frame.add(Login.logoPanel);
         frame.add(Registeration.registrationPanel);
         frame.add(ForgotPassword.forgotPanel);
+        frame.add(Dashboard.mainPanel);
     }
 }

@@ -1,8 +1,11 @@
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.awt.*;
-
 import javax.swing.*;
 
 public class Dashboard {
@@ -16,16 +19,37 @@ public class Dashboard {
     static TxHistory txRef = new TxHistory();
     static ChangePin chpin = new ChangePin();
 
+    JLabel txtGreetings = new JLabel();
+
     private static void styleMenuButton(JButton varName) {
         varName.setFont(new Font("Arial", Font.BOLD, 15));
         varName.setBackground(Color.GRAY);
         varName.setForeground(Color.white);
     }
 
-    // private static void repaintPanel
+    public void setData() {
+        Connection con = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try {
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bank", "root", "");
+            String query = "SELECT * FROM userdata WHERE AccountNo=?";
+            ps = con.prepareStatement(query);
+            ps.setString(1, Login.acN);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                txtGreetings.setText("Hello " + rs.getString("Name") + "!");
+            } else {
+                JOptionPane.showMessageDialog(mainPanel, "Incorrect Credentials.\nTRY AGAIN!!!", "Failure!",
+                        JOptionPane.WARNING_MESSAGE);
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(mainPanel, "Unable to login!", "Error!", JOptionPane.ERROR_MESSAGE);
+        }
+    }
 
-    public static void main(String[] args) {
-
+    Dashboard() {
+        menuPanel.setVisible(false);
         menuPanel.setBounds(0, 0, 300, 700);
         menuPanel.setBackground(new Color(31, 30, 31));
         menuPanel.setLayout(new BorderLayout());
@@ -33,8 +57,6 @@ public class Dashboard {
         contentPanel.setLayout(null);
         contentPanel.setBounds(300, 0, 900, 700);
 
-        String name = "User";
-        JLabel txtGreetings = new JLabel("Hello " + name + "!");
         txtGreetings.setFont(new Font("Arial", Font.BOLD, 18));
         txtGreetings.setForeground(Color.white);
         JLabel txtUD = new JLabel("User Dashboard");
@@ -90,27 +112,28 @@ public class Dashboard {
 
         mainPanel.setLayout(new BorderLayout());
 
-        JFrame f = new JFrame();
-        f.setTitle("IND Bank Limited - Client Software");
-        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        f.setResizable(false);
-        f.setSize(1200, 700);
-        ImageIcon iconLogo = new ImageIcon("lib/iconLogo.png");
-        f.setIconImage(iconLogo.getImage());
-        f.setVisible(true);
-        f.setLayout(null);
-        f.add(mainPanel);
+        // JFrame f = new JFrame();
+        // f.setTitle("IND Bank Limited - Client Software");
+        // f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        // f.setResizable(false);
+        // f.setSize(1200, 700);
+        // ImageIcon iconLogo = new ImageIcon("lib/iconLogo.png");
+        // f.setIconImage(iconLogo.getImage());
+        // f.setVisible(true);
+        // f.setLayout(null);
+        // f.add(mainPanel);
 
         Component aIJcomps[] = AccountInfo.accInfoPanel.getComponents();
         Component whcomps[] = Withdraw.withdrawPanel.getComponents();
-        Component deComps[]= Deposit.depositPanel.getComponents();
-        Component tsfComps[]=TfMoney.tfMoneyPanel.getComponents();
-        Component txComps[]= TxHistory.txHistoryPanel.getComponents();
-        Component chPComps[]= ChangePin.changePinPanel.getComponents();
+        Component deComps[] = Deposit.depositPanel.getComponents();
+        Component tsfComps[] = TfMoney.tfMoneyPanel.getComponents();
+        Component txComps[] = TxHistory.txHistoryPanel.getComponents();
+        Component chPComps[] = ChangePin.changePinPanel.getComponents();
         accInfoButton.addActionListener(new ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent e) {
                 contentPanel.removeAll();
                 contentPanel.repaint();
+                acinfoRef.setAccountInfo();
                 for (Component comp : aIJcomps) {
                     contentPanel.add(comp);
                     contentPanel.repaint();
@@ -122,6 +145,8 @@ public class Dashboard {
             public void actionPerformed(java.awt.event.ActionEvent e) {
                 contentPanel.removeAll();
                 contentPanel.repaint();
+                withdrawRef.setInfo();
+                // withdrawRef.withdrawButton();
                 for (Component comp : whcomps) {
                     contentPanel.add(comp);
                     contentPanel.repaint();
@@ -172,5 +197,6 @@ public class Dashboard {
                 }
             }
         });
+
     }
 }
