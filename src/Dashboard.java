@@ -19,7 +19,8 @@ public class Dashboard {
     static TxHistory txRef = new TxHistory();
     static ChangePin chpin = new ChangePin();
 
-    JLabel txtGreetings = new JLabel();
+    private JLabel txtGreetings = new JLabel();
+    private JLabel txtNameG = new JLabel();
 
     private static void styleMenuButton(JButton varName) {
         varName.setFont(new Font("Arial", Font.BOLD, 15));
@@ -190,7 +191,7 @@ public class Dashboard {
 
         logoutButton.addActionListener(new ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent e) {
-                // mainPanel.removeAll();
+                contentPanel.removeAll();
                 mainPanel.setVisible(false);
                 App.frame.dispose();
                 App.main(null);

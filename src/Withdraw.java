@@ -137,7 +137,7 @@ public class Withdraw {
         txtWamt.setBounds(500, 300, 200, 30);
         pinLabel.setBounds(300, 350, 150, 30);
         txtPin.setBounds(500, 350, 200, 30);
-        btnWithdraw.setBounds(390, 420, 200, 30);
+        btnWithdraw.setBounds(390, 420, 200, 40);
 
         btnWithdraw.addActionListener(new ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent e) {
