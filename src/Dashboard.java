@@ -50,6 +50,7 @@ public class Dashboard {
 
     Dashboard() {
         menuPanel.setVisible(false);
+        contentPanel.setVisible(false);
         menuPanel.setBounds(0, 0, 300, 700);
         menuPanel.setBackground(new Color(31, 30, 31));
         menuPanel.setLayout(new BorderLayout());
@@ -184,6 +185,17 @@ public class Dashboard {
                     contentPanel.add(comp);
                     contentPanel.repaint();
                 }
+            }
+        });
+
+        logoutButton.addActionListener(new ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent e) {
+                // mainPanel.removeAll();
+                mainPanel.setVisible(false);
+                App.frame.dispose();
+                App.main(null);
+                Login.logoPanel.setVisible(true);
+                Login.loginFormPanel.setVisible(true);
             }
         });
 

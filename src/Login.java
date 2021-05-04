@@ -108,10 +108,13 @@ public class Login {
                     rs = ps.executeQuery();
                     if (rs.next()) {
                         acN = acn;
+                        anTextField.setText("");
+                        pinField.setText("");
                         dashRef.setData();
                         loginFormPanel.setVisible(false);
                         logoPanel.setVisible(false);
                         Dashboard.menuPanel.setVisible(true);
+                        Dashboard.contentPanel.setVisible(true);
                         Dashboard.mainPanel.setVisible(true);
                     } else {
                         JOptionPane.showMessageDialog(loginFormPanel, "Incorrect Credentials.\nTRY AGAIN!!!",

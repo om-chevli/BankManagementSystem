@@ -2,11 +2,11 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
 public class App {
+    static JFrame frame = new JFrame();
+
     public static void main(String[] args) {
         Login.main(args);
-        
-        JFrame frame = new JFrame();
-        
+
         frame.setTitle("IND Bank Limited - Client Software");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
