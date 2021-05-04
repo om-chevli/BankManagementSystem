@@ -1,5 +1,4 @@
 import javax.swing.*;
-import javax.swing.event.ChangeEvent;
 
 import java.awt.*;
 import java.awt.event.ActionListener;
@@ -22,7 +21,8 @@ public class ChangePin {
     public void changePin() {
         String newPass = String.valueOf(txtNewPin.getPassword());
         String oldPass = String.valueOf(txtOldPin.getPassword());
-        if (newPass != oldPass) {
+        String confPass = String.valueOf(txtCPin.getPassword());
+        if (newPass.equals(confPass)) {
             try {
                 con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bank", "root", "");
                 String infoquery = "SELECT * FROM userdata WHERE AccountNo=? AND Pin=?";
@@ -31,21 +31,31 @@ public class ChangePin {
                 ps.setString(2, oldPass);
                 rs = ps.executeQuery();
                 if (rs.next()) {
-                    con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bank", "root", "");
-                    String updateQuery = "UPDATE userdata SET Pin='" + String.valueOf(txtNewPin.getPassword())
-                            + "' WHERE AccountNo='" + Login.acN + "';";
-                    ps = con.prepareStatement(updateQuery);
-                    ps.execute();
+                    if (!newPass.equals(oldPass)) {
+                        con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bank", "root", "");
+                        String updateQuery = "UPDATE userdata SET Pin='" + String.valueOf(txtNewPin.getPassword())
+                                + "' WHERE AccountNo='" + Login.acN + "';";
+                        ps = con.prepareStatement(updateQuery);
+                        ps.execute();
                         JOptionPane.showMessageDialog(changePinPanel, "Pin Updated Successfuly!", "Success!",
                                 JOptionPane.INFORMATION_MESSAGE);
+                    } else {
+                        JOptionPane.showMessageDialog(changePinPanel, "New password cannot be same as old password!",
+                                "Error!", JOptionPane.ERROR_MESSAGE);
+                    }
+
+                } else {
+                    JOptionPane.showMessageDialog(changePinPanel, "Incorrect Pin!", "Failure!",
+                            JOptionPane.ERROR_MESSAGE);
                 }
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(changePinPanel, "Unable to fetch data!", "Error!",
                         JOptionPane.ERROR_MESSAGE);
                 ex.printStackTrace();
             }
+
         } else {
-            JOptionPane.showMessageDialog(changePinPanel, "Confirm Pin mismatch!", "Failure!",
+            JOptionPane.showMessageDialog(changePinPanel, "Confirm Password is incorrect!", "Failure!",
                     JOptionPane.ERROR_MESSAGE);
         }
     }
