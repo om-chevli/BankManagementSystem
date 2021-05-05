@@ -171,6 +171,7 @@ public class Dashboard {
             public void actionPerformed(java.awt.event.ActionEvent e) {
                 contentPanel.removeAll();
                 contentPanel.repaint();
+                tfRef.setInfo();
                 for (Component comp : tsfComps) {
                     contentPanel.add(comp);
                     contentPanel.repaint();

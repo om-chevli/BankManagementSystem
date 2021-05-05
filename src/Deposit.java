@@ -78,6 +78,9 @@ public class Deposit {
                         setInfo();
                         txtDamt.setText("");
                         txtPin.setText("");
+                    } else {
+                        JOptionPane.showMessageDialog(depositPanel, "Unable to insert data!", "Failure!",
+                                JOptionPane.ERROR_MESSAGE);
                     }
                 } else {
                     JOptionPane.showMessageDialog(depositPanel, "Negative Values are prohibited", "Failure!",

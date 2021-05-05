@@ -45,7 +45,7 @@ public class Withdraw {
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bank", "root", "");
             String infoquery = "SELECT * FROM userdata WHERE AccountNo=? AND Pin=?";
             ps = con.prepareStatement(infoquery);
-            ps.setString(1, txtAn.getText());
+            ps.setString(1, Login.acN);
             ps.setString(2, String.valueOf(txtPin.getPassword()));
             rs = ps.executeQuery();
             if (rs.next()) {
@@ -53,10 +53,9 @@ public class Withdraw {
                 int totalAmt = Integer.parseInt(txtBal.getText());
                 int wdAmt = Integer.parseInt(txtWamt.getText());
 
-                if (wdAmt > totalAmt && wdAmt > 1) {
-                    JOptionPane.showMessageDialog(withdrawPanel,
-                            "Insufficient Balance!",
-                            "Failure!", JOptionPane.WARNING_MESSAGE);
+                if (wdAmt > totalAmt) {
+                    JOptionPane.showMessageDialog(withdrawPanel, "Insufficient Balance!", "Failure!",
+                            JOptionPane.WARNING_MESSAGE);
                 } else {
                     if (wdAmt > 1) {
                         int balance = totalAmt - wdAmt;
